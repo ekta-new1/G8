@@ -1,0 +1,182 @@
+Anagram Problems in DSA 
+Two strings are anagrams if:
+They contain exactly the same characters
+Character frequency is the same
+Order doesn't matter
+listen
+silent
+Frequency
+l -> 1
+i -> 1
+s -> 1
+t -> 1
+e -> 1
+n -> 1
+Both have identical frequency.
+ Examples -
+String 1
+String 2
+Anagram?
+listen
+silent
+Yes
+evil
+vile
+Yes
+race
+care
+Yes
+hello
+world
+No
+rat
+car
+No
+
+
+Golden Rule
+Whenever the question says
+same letters
+rearrangement
+permutation
+grouping similar words
+substring with same characters
+frequency comparison
+It is the category of Anagram
+Approaches to Solve Anagram Problems
+There are mainly 3 approaches.
+Approach 1 : Sorting
+Example
+listen
+silent
+Sort both strings
+eilnst
+eilnst
+Equal? Yes
+Hence anagram.
+Algorithm
+Sort string1
+Sort string2
+
+Compare both the strings-
+
+If equal
+    Anagram
+
+Else
+    Not anagram
+Complexity
+Sorting
+
+O(n log n)
+Approach 2 : Frequency Array -
+It works when only lowercase letters exist.
+Example
+listen
+silent
+Frequency array
+int freq[26]   // [0,0,0,0,.....0]]
+Step 1
+Increase frequency of first string
+listen
+
+l++
+
+i++
+
+s++
+
+t++
+
+e++
+
+n++
+Frequency
+a 0
+b 0
+...
+e 1
+i 1
+l 1
+n 1
+s 1
+t 1
+Now decrease using second string
+silent
+
+s--
+
+i--
+
+l--
+
+e--
+
+n--
+
+t--
+Everything becomes 0 at the end
+Therefore it is an Anagram.
+Algorithm
+For first string
+
+freq[ch-'a']++
+
+For second string
+
+freq[ch-'a']--
+
+If any frequency !=0
+
+Not anagram
+
+Else
+
+Anagram
+Complexity
+Time
+
+O(n)
+Approach 3 : HashMap Frequency
+Works for
+Uppercase
+Lowercase
+Unicode
+Numbers
+Special characters
+Example
+Aabbbccc
+abbccaab
+HashMap
+a ->2
+
+b ->3
+
+c ->3
+Now we read the second string.
+Instead of making another HashMap, we decrease the counts from the existing one.
+Time Complexity - O(n)
+
+—-----------------------------------------------------------------------------------------------------------------
+
+Practice Question - 
+ 1) Given two strings s and t, determine whether t is an anagram of s.   
+Example
+Input
+s = "anagram"
+t = "nagaram"
+Output - true
+
+2) Group Anagrams 
+Problem
+Given an array of strings, group all anagrams together.
+Example
+Input
+
+["eat","tea","tan","ate","nat","bat"]
+
+Output -
+[[eat, tea, ate],
+ [tan, nat],
+ [bat]]
+
