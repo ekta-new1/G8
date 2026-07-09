@@ -1,0 +1,128 @@
+Greedy algorithm -
+
+
+A greedy algorithm is an algorithmic strategy that builds a solution step by step, always choosing the best immediate or locally optimal option at each step, hoping that these local choices will lead to a globally optimal solution.
+It never looks too far ahead
+It picks what seems best right now
+It usually does not revisit or undo earlier choices
+If you are solving a problem where you need the best overall answer.
+A greedy algorithm means:
+“At every step, take the most beneficial choice available right now.”
+This works well for some problems, but not all.
+
+
+Minimum Number of Coins -
+You are given coin denominations and a value X. Return the minimum number of coins needed to make exactly X.
+Input
+Array coins[]
+Integer X
+Task
+Pick coins greedily and find the number of coins used.
+Example
+text
+coins = [1, 2, 5, 10, 20, 50]
+X = 93
+Expected Output
+5
+Explanation
+Possible greedy choice: 50 + 20 + 20 + 2 + 1
+
+
+Greedy Algorithm - 
+Step 1: Read the input. 
+Step 2: Sort the data according to the greedy condition (if sorting is required).
+Step 4: Traverse all elements one by one. 
+Step 5: For each element, if it satisfies the condition, choose it. else skip it. Step 6: Repeat until all elements are processed. 
+
+Practice Question (Medium) -
+
+
+Problem Statement: There is one meeting room in a firm. You are given two arrays, start and end each of size N. For an index ‘i’, start[i] denotes the starting time of the ith meeting while end[i] will denote the ending time of the ith meeting. Find the maximum number of meetings that can be accommodated if only one meeting can happen in the room at a particular time. Print the order in which these meetings will be performed. 
+
+Input: N = 6,  
+start[ ] = {1,3,0,5,8,5}, 
+end[ ] =  {2,4,6,7,9,9}
+Output: 4
+
+
+
+
+Step 1: Create a list to store each meeting as   {end time, start time}.
+Step 2: Store all meetings in the list.
+Step 3: Sort the meetings in increasing order of their end time.
+Step 4: Initialize
+        count = 0
+        lastEnd = -1
+Step 5: Traverse all meetings one by one.
+Step 6: For each meeting,
+        if the meeting's start time is greater than lastEnd,
+            Select the meeting.
+            Increase count by 1.
+            Update lastEnd with the current meeting's end time.
+        Otherwise,
+            Skip the meeting.
+Step 7: Repeat until all meetings are checked.
+Step 8: Print (or return) count.
+—---------------------------------------------------------------------------
+1. Activity Selection Problem 
+Problem
+Given the start and end times of N activities, select the maximum number of non-overlapping activities that can be performed by a single person.
+Example
+Input:
+Start = [1,3,0,5,8,5]
+End   = [2,4,6,7,9,9]
+
+Output:
+4
+Hint
+Sort activities according to their ending time.
+Always choose the activity that finishes earliest.
+
+2. Assign Cookies 
+Problem
+You have children with different greed factors and cookies with different sizes.
+A child can only be satisfied if the cookie size is greater than or equal to the child's greed factor.
+Find the maximum number of satisfied children.
+Example
+Input:
+Greed = [1,2,3]
+Cookies = [1,1]
+
+Output:
+1
+Hint
+Sort both arrays.
+Give the smallest possible cookie to each child.
+
+3. Lemonade Change 
+Problem
+Customers pay with $5, $10, or $20 bills.
+Each lemonade costs $5.
+Initially, you have no money.
+Return whether it is possible to provide correct change to every customer.
+Example
+Input:
+[5,5,5,10,20]
+
+Output:
+true
+Hint
+Always give larger bills first while returning change.
+
+4. Maximum Units on a Truck 
+Problem
+Each box type contains
+Number of boxes
+Units per box
+The truck can carry only a limited number of boxes.
+Find the maximum units that can be loaded.
+Example
+Input:
+boxTypes = [[1,3],[2,2],[3,1]]
+truckSize = 4
+
+Output:
+8
+Hint
+Sort by units per box in descending order.
+
