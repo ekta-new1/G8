@@ -29,19 +29,19 @@ public class Greedy2 {
         //    }
         //}
 
-        // [[2,1],[4,3],[6,0],[7,5],[9,8],[9,5]]
+        // [[2,1],[4,0],[6,3],[7,5],[9,8],[9,5]]
 
         int count = 0;
         int lastEnd = -1;
 
         // Greedy approach
-        for (int[] meeting : meetings) {   //[4,3]
-            int meetingEnd = meeting[0];  //4
-            int meetingStart = meeting[1];   //3
+        for (int[] meeting : meetings) {   //[2,1]
+            int meetingEnd = meeting[0];  //2
+            int meetingStart = meeting[1];   //1
 
-            if (meetingStart > lastEnd) {   //3>2
-                count++;   //2
-                lastEnd = meetingEnd;   //4
+            if (meetingStart > lastEnd) {   //1>-1 true
+                count++;   //1
+                lastEnd = meetingEnd;   //2
             }
         }
 
