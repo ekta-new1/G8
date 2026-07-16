@@ -1,0 +1,195 @@
+String Compression
+String Compression is a technique used to reduce the size of a string by replacing consecutive repeated characters with:
+the character + followed by the number of times it appears consecutively.
+String Compression means counting consecutive repeated characters and replacing them with character + count.
+Example - 
+aabbc
+a2b2c1
+Why do we use String Compression?
+Suppose we have a string containing many repeated characters.
+Instead of storing lengthy string - aaaaabbbbcccc
+we can store -
+a5b4c4
+This saves space (when there are many repeated characters).
+
+Example 1
+Input
+aaabbccccd
+Let's count each group.
+aaa
+Three 'a'
+↓
+a3
+Next
+bb
+Two 'b'
+↓
+b2
+Next
+cccc
+Four 'c'
+↓
+c4
+Next
+d
+One 'd'
+↓
+d1
+Final Output
+a3b2c4d1
+
+NOTE : We only count consecutive characters.
+We do NOT count total occurrences.
+Example
+Input
+abac
+Character 'a' appears twice but since they are not together so, 
+Wrong - a2b1c1
+Correct - a1b1a1c1
+
+Another Example
+Input
+aaabbaa
+Break into groups.
+aaa
+bb
+aa
+Compression
+a3b2a2
+How does the algorithm work?
+Suppose
+aaabbccccd
+We start from the first character.
+a a a b b c c c c d
+↑
+Current character = a
+Count = 1
+
+Move ahead.
+a a a b b c c c c d
+↑ ↑
+Still a
+Count = 2
+
+Move again.
+a a a b b c c c c d
+↑ ↑ ↑
+Still a
+Count = 3
+
+Next character becomes b
+That means the group of a has finished.
+Append
+a3
+Result
+a3
+
+Now move to b
+a a a b b c c c c d
+         ↑
+Count = 1
+Next
+a a a b b c c c c d
+         ↑ ↑
+Count = 2
+Next character is c
+Append
+b2
+Result
+a3b2
+
+Now move to c
+c c c c
+Count
+4
+Append
+c4
+Result
+a3b2c4
+
+Finally
+d
+Append
+d1
+Final Result
+a3b2c4d1
+
+Algorithm -
+Step 1
+Create an empty answer string (or StringBuilder).
+
+Step 2
+Start from the first character.
+
+Step 3
+Count how many times the current character repeats continuously.
+
+Step 4
+Append
+character + count
+to the answer.
+
+Step 5
+Move to the next different character.
+
+Step 6
+Repeat until the entire string is completed.
+
+Step 7
+Return the compressed string.
+
+Pseudocode
+Create empty answer
+
+Start from first character
+
+While string is not finished
+
+    Count repeated characters
+
+    Add character + count to answer
+
+Move to next group
+
+Return answer
+—------------------------------------------------------------------------------------------------------------------
+LEETCODE Question - 443 
+Input: chars = ["a","a","b","b","c","c","c"]
+Output: 6
+Explanation: The groups are "aa", "bb", and "ccc". This compresses to "a2b2c3".
+After modifying the input array in-place, the first 6 characters of chars should be ["a","2","b","2","c","3"].
+Optimised Solution -
+class Solution {
+
+    public int compress(char[] chars) {
+        int index = 0;    
+        int i = 0;         
+        //['a','a','b']
+        while (i < chars.length) {  
+
+            char currentChar = chars[i];
+            int count = 0;
+       
+            while (i < chars.length && chars[i] == currentChar) {
+                count++;
+                i++;
+            }
+
+       
+            chars[index++] = currentChar;
+
+         
+            if (count > 1) {
+
+                String cnt = String.valueOf(count);
+
+                for (char digit : cnt.toCharArray()) {
+                    chars[index++] = digit;
+                }
+            }
+        }
+
+        return index;
+    }
+}
+--------------------------------------------------------------
