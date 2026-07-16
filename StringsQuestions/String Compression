@@ -193,3 +193,154 @@ class Solution {
     }
 }
 --------------------------------------------------------------
+Explanation (DRY RUN) -
+chars = ['a', 'a', 'b']
+
+i = 0
+index = 0
+
+Chars : [a,  a,  b]
+          ↑
+          i
+
+
+char currentChar = chars[i];
+currentChar = 'a'
+
+Count consecutive characters
+
+while(i < chars.length && chars[i] == currentChar)  //true
+count = 1
+i = 1
+
+while(i < chars.length && chars[i] == currentChar)  //true
+count = 2
+i = 2
+
+while(i < chars.length && chars[i] == currentChar) //false; b==a
+
+Stop.
+--------------------------------
+Step 3: Write current character
+
+chars[index++] = currentChar;
+
+chars[0] = 'a';
+
+Step 4: Write count
+
+Since
+
+count = 2
+
+Convert
+
+String cnt = "2";
+
+Loop
+
+chars[index++] = '2';
+
+First
+
+chars[1] = '2';
+
+Array becomes
+
+[a, 2, b]
+
+Then
+
+index = 2
+End of Iteration 1
+Array
+
+Index :  0   1   2
+Chars : [a, 2, b]
+
+i = 2
+index = 2
+Iteration 2
+
+Current
+
+Index :  0   1   2
+Chars : [a, 2, b]
+                ↑
+                i
+
+Store
+
+currentChar = 'b'
+Count
+
+Run while loop
+
+chars[2] == 'b'
+
+Yes
+
+count = 1
+i = 3
+
+Now
+
+i == chars.length
+
+Loop ends.
+
+Write current character
+
+Execute
+
+chars[index++] = currentChar;
+
+Current
+
+index = 2
+
+First
+
+chars[2] = 'b';
+
+Array
+
+[a,2,b]
+
+Then
+
+index = 3
+Write count?
+
+No.
+
+Because
+
+count = 1
+
+This condition
+
+if(count > 1)
+
+is false.
+
+So nothing is written.
+
+Loop Ends
+
+Because
+
+i = 3
+chars.length = 3
+
+Outer while loop stops.
+
+Final Array
+Index :  0   1   2
+Chars : [a, 2, b]
+
+Return
+
+return index;
+return 3
+-------------------------------------------------------
